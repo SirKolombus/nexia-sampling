@@ -1,6 +1,6 @@
 # NEXIA - Vzorkování | Instalační příručka
 
-## 📦 Instalační balíček v0.6
+## 📦 Instalační balíček v0.65
 
 Tento balíček obsahuje kompletní auditní nástroj pro statistické vzorkování v Excelu.
 
@@ -100,5 +100,5 @@ Pro technickou podporu kontaktuj NEXIA AP tým.
 
 ---
 
-**NEXIA - Vzorkování v0.6**  
+**NEXIA - Vzorkování v0.65**  
 © 2025 NEXIA AP | Auditní nástroj pro Excel

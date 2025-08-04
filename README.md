@@ -47,7 +47,7 @@ Profesionální auditní nástroj pro Excel poskytující různé metody statist
 ### v0.6 (Dokončená) ✅
 - ✅ **Nové NEXIA logo** - Implementace "Nové logo Nexia.png" v hlavičce add-inu
 - ✅ **Nové ikony add-inu** - Vytvoření všech velikostí ikon (16, 32, 64, 80, 128 px) z "Nexiaa.png"
-- ✅ **Přejmenování aplikace** - Z "NPP" na "NEXIA - Vzorkování" ve všech kontextech
+- ✅ **Přejmenování aplikace** - Z "NPP" na "# NEXIA - Vzorkování v0.65" ve všech kontextech
 - ✅ **Vylepšený branding** - Konzistentní NEXIA identita napříč celým add-inem
 - ✅ **Tučný nadpis** - "Nástroj pro vzorkování" s optimálním spacingem
 - ✅ **Cache management** - Řešení problémů s načítáním nových ikon
