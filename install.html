@@ -104,91 +104,87 @@
         <h1>NEXIA - Vzorkování</h1>
         <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
         
-        <a href="ms-excel:ofv|u|https://sirkolombus.github.io/nexia-sampling/manifest.xml" class="install-btn" onclick="fallbackInstall(event)">
-            🚀 Automatická instalace
+        <a href="https://office.com/launch/excel" target="_blank" class="install-btn" onclick="launchExcelOnline(event)">
+            🌐 Otevřít Excel Online
         </a>
         
-        <a href="https://sirkolombus.github.io/nexia-sampling/manifest.xml" target="_blank" class="install-btn" style="background: #ff6b6b;" onclick="openManifest(event)">
-            ⚡ Instalovat přes prohlížeč
-        </a>
+        <button class="install-btn" style="background: #ff6b6b;" onclick="copyManifestUrl()">
+            📋 Zkopírovat URL add-inu
+        </button>
         
         <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
             📁 Stáhnout manifest.xml
         </a>
         
         <script>
-        function fallbackInstall(event) {
-            // Detekce prohlížeče a systému
-            var userAgent = navigator.userAgent;
-            var isMac = userAgent.includes('Mac');
-            var isWindows = userAgent.includes('Windows');
-            var isChrome = userAgent.includes('Chrome');
-            var isSafari = userAgent.includes('Safari') && !userAgent.includes('Chrome');
-            var isFirefox = userAgent.includes('Firefox');
+        function launchExcelOnline(event) {
+            event.preventDefault();
             
-            // Pokus o automatickou instalaci
-            setTimeout(function() {
-                var message = '💡 Pokud se Excel neotevřel automaticky:\n\n';
-                
-                if (isMac) {
-                    message += 'Na macOS zkus:\n';
-                    message += '1. Červené tlačítko "⚡ Instalovat přes prohlížeč"\n';
-                    message += '2. Nebo zkopíruj URL a vlož ji přímo do Excelu\n\n';
-                }
-                
-                if (isWindows) {
-                    message += 'Na Windows zkus:\n';
-                    message += '1. Pravým tlačítkem na modrý odkaz → "Kopírovat adresu odkazu"\n';
-                    message += '2. Excel → Vložit → Získat doplňky → vlož URL\n\n';
-                }
-                
-                message += '3. Nebo použij zelené tlačítko "📁 Stáhnout manifest.xml"';
-                
-                alert(message);
-            }, 2000);
-        }
-        
-        function openManifest(event) {
             // Zkopírování URL do schránky
-            var url = 'https://sirkolombus.github.io/nexia-sampling/manifest.xml';
+            var manifestUrl = 'https://sirkolombus.github.io/nexia-sampling/manifest.xml';
             
             if (navigator.clipboard) {
-                navigator.clipboard.writeText(url).then(function() {
-                    alert('✅ URL zkopírována do schránky!\n\n' + url + '\n\nTed:\n1. Otevři Excel\n2. Vložit → Získat doplňky\n3. Vlož zkopírovanou URL');
+                navigator.clipboard.writeText(manifestUrl).then(function() {
+                    alert('✅ URL add-inu zkopírována!\n\n' + manifestUrl + '\n\n📋 POSTUP:\n1. Klikni OK pro otevření Excel Online\n2. Vytvoř nový sešit\n3. Vložit → Doplňky → Získat doplňky\n4. "Nahrát můj doplněk" → vlož zkopírovanou URL');
+                    
+                    // Otevření Excel Online
+                    window.open('https://office.com/launch/excel', '_blank');
                 }).catch(function() {
-                    showManualInstructions(url);
+                    showExcelOnlineInstructions(manifestUrl);
                 });
             } else {
-                showManualInstructions(url);
+                showExcelOnlineInstructions(manifestUrl);
             }
         }
         
-        function showManualInstructions(url) {
-            alert('💡 Zkopíruj tuto URL do Excelu:\n\n' + url + '\n\n1. Otevři Excel\n2. Vložit → Získat doplňky\n3. Vlož URL výše');
+        function copyManifestUrl() {
+            var manifestUrl = 'https://sirkolombus.github.io/nexia-sampling/manifest.xml';
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(manifestUrl).then(function() {
+                    alert('✅ URL zkopírována do schránky!\n\n' + manifestUrl + '\n\n📋 JAK NAINSTALOVAT:\n\n🖥️ DESKTOP EXCEL:\n1. Otevři Excel\n2. Vložit → Získat doplňky\n3. "Nahrát můj doplněk" → vlož URL\n\n🌐 EXCEL ONLINE:\n1. Jdi na office.com\n2. Otevři Excel Online\n3. Vložit → Doplňky → Získat doplňky\n4. "Nahrát můj doplněk" → vlož URL');
+                }).catch(function() {
+                    showManualCopy(manifestUrl);
+                });
+            } else {
+                showManualCopy(manifestUrl);
+            }
+        }
+        
+        function showExcelOnlineInstructions(url) {
+            alert('� Zkopíruj URL a pokračuj:\n\n' + url + '\n\n1. Jdi na office.com\n2. Otevři Excel Online\n3. Vložit → Doplňky → vlož URL výše');
+            window.open('https://office.com/launch/excel', '_blank');
+        }
+        
+        function showManualCopy(url) {
+            alert('📋 Zkopíruj tuto URL:\n\n' + url + '\n\nPak jdi do Excelu:\nVložit → Získat doplňky → "Nahrát můj doplněk" → vlož URL');
         }
         </script>
         
-        <div style="background: #fff3cd; border: 2px solid #ffeaa7; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
-            <h4 style="margin-top: 0; color: #856404;">📋 Instrukce pro instalaci:</h4>
+        <div style="background: #e8f5e8; border: 2px solid #4caf50; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
+            <h4 style="margin-top: 0; color: #2e7d32;">🎯 NEJSPOLEHLIVĚJŠÍ ZPŮSOB INSTALACE:</h4>
             
-            <p><strong>Metoda A - Automatická (nejjednodušší):</strong></p>
+            <p><strong>Metoda 1 - Excel Online (100% funkční):</strong></p>
             <ol>
-                <li>Klikni na modré tlačítko "🚀 Automatická instalace"</li>
-                <li>Pokud se Excel neotevře, zkus červené tlačítko</li>
+                <li>Klikni na <strong>"🌐 Otevřít Excel Online"</strong></li>
+                <li>URL se automaticky zkopíruje do schránky</li>
+                <li>V Excel Online: <strong>Vložit → Doplňky → Získat doplňky</strong></li>
+                <li>Klikni <strong>"Nahrát můj doplněk"</strong> a vlož zkopírovanou URL</li>
             </ol>
             
-            <p><strong>Metoda B - Přes prohlížeč:</strong></p>
+            <p><strong>Metoda 2 - Desktop Excel:</strong></p>
             <ol>
-                <li>Klikni na červené tlačítko "⚡ Instalovat přes prohlížeč"</li>
-                <li>Zkopíruj zobrazovanou URL</li>
-                <li>V Excelu jdi na: Vložit → Získat doplňky → zadej URL</li>
+                <li>Klikni na <strong>"📋 Zkopírovat URL add-inu"</strong></li>
+                <li>Otevři Excel na počítači</li>
+                <li>Jdi na: <strong>Vložit → Získat doplňky → "Nahrát můj doplněk"</strong></li>
+                <li>Vlož zkopírovanou URL</li>
             </ol>
             
-            <p><strong>Metoda C - Ruční stažení:</strong></p>
+            <p><strong>Metoda 3 - Ruční stažení:</strong></p>
             <ol>
-                <li>Klikni na zelené tlačítko "📁 Stáhnout manifest.xml"</li>
-                <li>Otevři Excel → Vložit → Získat doplňky → Moje doplňky</li>
-                <li>Klikni "Nahrát můj doplněk" a vyber stažený soubor</li>
+                <li>Klikni na <strong>"📁 Stáhnout manifest.xml"</strong></li>
+                <li>V Excelu: <strong>Vložit → Získat doplňky → Moje doplňky</strong></li>
+                <li><strong>"Nahrát můj doplněk"</strong> a vyber stažený soubor</li>
             </ol>
         </div>
         
