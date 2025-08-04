@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXIA - Vzorkování | Instalace</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .install-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+        
+        .install-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .requirements {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .requirements h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .requirements ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .version {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+        
+        .support {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/Nové logo Nexia.png" alt="NEXIA AP" class="logo">
+        
+        <h1>NEXIA - Vzorkování</h1>
+        <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
+        
+        <a href="ms-excel:ofv|u|https://nexia-sampling.github.io/manifest.xml" class="install-btn">
+            🚀 Nainstalovat do Excelu
+        </a>
+        
+        <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
+            📁 Stáhnout manifest.xml
+        </a>
+        
+        <div class="requirements">
+            <h3>📋 Systémové požadavky:</h3>
+            <ul>
+                <li>Microsoft Excel 2016 nebo novější</li>
+                <li>Windows 10/11 nebo macOS 10.14+</li>
+                <li>Připojení k internetu</li>
+            </ul>
+        </div>
+        
+        <div class="support">
+            <strong>💡 Tip:</strong> Po kliknutí na "Nainstalovat" se automaticky otevře Excel s nabídkou instalace. Stačí potvrdit a add-in se objeví na kartě "Domů".
+        </div>
+        
+        <div class="version">
+            NEXIA - Vzorkování v0.6 | © 2025 NEXIA AP
+        </div>
+    </div>
+</body>
+</html>

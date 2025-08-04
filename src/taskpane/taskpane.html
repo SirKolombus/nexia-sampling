@@ -1,0 +1,198 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+<!-- Auditní nástroj pro náhodnou peněžní procházku -->
+<!-- Autorem je Tomáš Pavlovič ve spolupráci s GitHub Copilot -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEXIA - Vzorkování</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="280" height="108" src="../../assets/Nové logo Nexia.png" alt="NEXIA AP" title="NEXIA AP" style="margin-bottom: 5px;" />
+        <h1 class="ms-font-su" style="font-weight: bold; margin-top: 0;">Nástroj pro vzorkování</h1>
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing">sideload</a> your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+        <div class="form-container">
+            <!-- Základní nastavení -->
+            <div class="form-card">
+                <div class="card-header">
+                    🎯 Základní nastavení
+                </div>
+                <div class="card-content">
+                    <div class="form-section">
+                        <div class="section-title">Metoda vzorkování</div>
+                        <div class="input-group">
+                            <label class="ms-Label" for="sampling-method">Vyberte metodu:</label>
+                            <div class="help-text">Vyberte vhodnou metodu podle typu auditu a požadavků 💡</div>
+                            <select id="sampling-method" class="ms-TextField-field">
+                                <option value="npp">Náhodná peněžní procházka (NPP)</option>
+                                <option value="random">Náhodný generátor čísel</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="section-title">Oblast dat</div>
+                        <div class="input-group">
+                            <label class="ms-Label">Vyberte rozsah v Excelu:</label>
+                            <div class="help-text">Označte v Excelu celou oblast s daty včetně hlaviček. Příklad: A1:E1000 📊</div>
+                            <div id="selected-range" class="ms-font-s ms-fontColor-themePrimary">Nevybráno</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="amount-column">Sloupec s obraty:</label>
+                            <div class="help-text">Zadejte písmeno sloupce (A, B, C...) nebo číslo (1, 2, 3...) kde jsou částky/obraty 💰</div>
+                            <input type="text" id="amount-column" class="ms-TextField-field" placeholder="např. C nebo 3" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- NPP parametry -->
+            <div id="npp-parameters" class="form-card">
+                <div class="card-header">
+                    📊 Parametry NPP vzorkování
+                </div>
+                <div class="card-content">
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="confidence-factor">Faktor spolehlivosti:</label>
+                            <div class="help-text">Vyplňte faktor spolehlivosti odpovídající analýze rizika auditorské zakázky ⚡</div>
+                            <input type="number" id="confidence-factor" class="ms-TextField-field" step="0.1" value="2.3" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="materiality">Prováděcí významnost:</label>
+                            <div class="help-text">Maximální akceptovatelná chyba v Kč. Čím menší číslo, tím více vzorků 🎯</div>
+                            <input type="text" id="materiality" class="ms-TextField-field" step="1000" value="50 000" placeholder="např. 50 000" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Random parametry -->
+            <div id="random-parameters" class="form-card" style="display: none;">
+                <div class="card-header">
+                    🎲 Parametry náhodného výběru
+                </div>
+                <div class="card-content">
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="random-materiality">Prováděcí významnost:</label>
+                            <div class="help-text">Maximální akceptovatelná chyba v Kč. Čím menší číslo, tím více vzorků 🎯</div>
+                            <input type="text" id="random-materiality" class="ms-TextField-field" value="50 000" placeholder="např. 50 000" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="random-confidence">Faktor spolehlivosti:</label>
+                            <div class="help-text">Vyplňte faktor spolehlivosti odpovídající analýze rizika auditorské zakázky ⚡</div>
+                            <input type="number" id="random-confidence" class="ms-TextField-field" step="0.1" value="2.3" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="random-seed">Unikátní název sekvence (volitelné):</label>
+                            <div class="help-text">Zadejte číslo pro reprodukovatelné výsledky. Stejný název = stejné výsledky vzorkování 🔄</div>
+                            <input type="number" id="random-seed" class="ms-TextField-field" placeholder="např. 12345" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Akční tlačítko -->
+            <div class="form-card">
+                <div class="card-content">
+                    <div role="button" id="calculate-sample" class="ms-Button ms-Button--primary ms-font-m">
+                        <span class="ms-Button-label" id="calculate-button-text">🧮 Vypočítat statistický vzorek</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Výsledky a finální nastavení -->
+            <div id="sample-result" class="form-card" style="display: none;">
+                <div class="card-header">
+                    ✅ Výsledek výpočtu a finální nastavení
+                </div>
+                <div class="card-content">
+                    <div class="form-section">
+                        <div class="ms-MessageBar ms-MessageBar--info">
+                            <div class="ms-MessageBar-content">
+                                <div class="ms-MessageBar-text">
+                                    <strong>📊 Statistický odhad vzorku: </strong><span id="calculated-sample">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="input-group">
+                            <label class="ms-Label" for="final-sample-size">Konečný počet vzorků:</label>
+                            <div class="help-text">Můžete použít vypočtený nebo zadat vlastní počet vzorků 🎯</div>
+                            <input type="number" id="final-sample-size" class="ms-TextField-field" min="1" />
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="section-title">Umístění výsledků</div>
+                        <div class="help-text">Vyberte, kde se mají uložit parametry a výsledky vzorkování 📋</div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="params-same-sheet" name="params-location" value="same" checked />
+                                <label for="params-same-sheet">📄 Na stejný list (standardní)</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="params-new-sheet" name="params-location" value="new" />
+                                <label for="params-new-sheet">📋 Na nový list</label>
+                            </div>
+                        </div>
+                        <div class="help-text" style="margin-top: 10px; font-size: 12px; color: #718096;">
+                            ⚠️ Pozor: Pokud při generaci dojde k překročení Excel limitu řádků (>1 000 000), 
+                            parametry se automaticky vygenerují na nový list bez ohledu na tuto volbu.
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div role="button" id="generate-sample" class="ms-Button ms-Button--hero ms-font-m">
+                            <span class="ms-Button-label">🚀 Vygenerovat výběr vzorku</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Status Bar pro zprávy -->
+        <div id="status-bar" class="status-bar"></div>
+        
+        <div class="author-info">
+            <p class="ms-font-xs">Autorem je Tomáš Pavlovič ve spolupráci s GitHub Copilot</p>
+        </div>
+    </main>
+</body>
+
+</html>

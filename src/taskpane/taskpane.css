@@ -1,0 +1,602 @@
+/* 
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ * 
+ * Auditní nástroj pro náhodnou peněžní procházku v0.5 - Modern UI
+ * Autorem je Tomáš Pavlovič ve spolupráci s GitHub Copilot
+ */
+
+/* === GLOBAL STYLES === */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    color: #2c3e50;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* === HEADER SECTION === */
+.ms-welcome__header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.ms-welcome__header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.ms-welcome__header img {
+    position: relative;
+    z-index: 2;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ms-welcome__header h1 {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 15px 0 0 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+/* === MAIN CONTENT === */
+.ms-welcome__main {
+    padding: 0;
+    background: transparent;
+    max-width: 100%;
+    overflow-y: auto;
+}
+
+.ms-welcome__main > h2 {
+    background: white;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #2c3e50;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #667eea;
+}
+
+/* === CARD LAYOUT === */
+.form-container {
+    padding: 20px;
+    padding-bottom: 80px; /* Extra space for fixed status bar and author info */
+    max-width: 100%;
+}
+
+.form-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.form-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    font-weight: 600;
+    font-size: 16px;
+    border-bottom: none;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+/* === FORM SECTIONS === */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f8f9fa;
+}
+ 
+/* === INPUT FIELDS === */
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.ms-Label {
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.ms-TextField-field {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 20px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.ms-TextField-field:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-1px);
+}
+
+.ms-TextField-field:hover {
+    border-color: #cbd5e0;
+}
+
+/* Select styling */
+select.ms-TextField-field {
+    background: white url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23667eea" stroke-width="2"><polyline points="6,9 12,15 18,9"></polyline></svg>') no-repeat right 12px center;
+    background-size: 16px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* === BUTTONS === */
+.ms-Button {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.ms-Button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.ms-Button:hover::before {
+    left: 100%;
+}
+
+.ms-Button--primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.ms-Button--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.ms-Button--primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.ms-Button--hero {
+    background: linear-gradient(135deg, #2c5f8a 0%, #1f4e79 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(44, 95, 138, 0.3);
+    margin-top: 20px;
+}
+
+.ms-Button--hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 95, 138, 0.4);
+}
+
+.ms-Button--hero .ms-Button-label {
+    color: white;
+}
+
+/* === MESSAGE BARS === */
+.ms-MessageBar {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.ms-MessageBar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+}
+
+.ms-MessageBar--info {
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1565c0;
+}
+
+.ms-MessageBar--info::before {
+    background: #2196f3;
+}
+
+.ms-MessageBar--error {
+    background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    color: #c62828;
+}
+
+.ms-MessageBar--error::before {
+    background: #f44336;
+}
+
+.ms-MessageBar--success {
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    color: #2e7d32;
+}
+
+.ms-MessageBar--success::before {
+    background: #4caf50;
+}
+
+.ms-MessageBar-text {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* === SPECIAL COMPONENTS === */
+#selected-range {
+    padding: 15px;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 8px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    color: #2d3748;
+    border: 2px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+}
+
+#selected-range::before {
+    content: '📊';
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.help-text {
+    background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+    color: #234e52;
+    font-style: normal;
+    margin: 10px 0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 4px solid #38b2ac;
+    line-height: 1.5;
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(56, 178, 172, 0.1);
+}
+
+/* === RADIO BUTTONS === */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+.radio-option:hover {
+    border-color: #667eea;
+    background: #f7fafc;
+    transform: translateX(4px);
+}
+
+.radio-option input[type="radio"] {
+    margin: 0;
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: #667eea;
+    cursor: pointer;
+}
+
+.radio-option label {
+    cursor: pointer;
+    color: #2d3748;
+    font-weight: 500;
+    font-size: 14px;
+    flex: 1;
+    margin: 0;
+}
+
+.radio-option input[type="radio"]:checked + label {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.radio-option:has(input[type="radio"]:checked) {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #f0f4ff 0%, #e6efff 100%);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.1);
+}
+
+/* === STATUS BAR === */
+.status-bar {
+    position: fixed;
+    bottom: 30px; /* Above author info */
+    left: 10px;
+    right: 10px;
+    padding: 0;
+    z-index: 999;
+    pointer-events: none; /* Don't block clicks */
+}
+
+.status-message {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 8px;
+    padding: 12px 16px;
+    border-left: 4px solid;
+    animation: slideInUp 0.3s ease-out;
+    pointer-events: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.status-message.success {
+    border-left-color: #4caf50;
+    background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+    color: #2e7d32;
+}
+
+.status-message.error {
+    border-left-color: #f44336;
+    background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    color: #c62828;
+}
+
+.status-message.info {
+    border-left-color: #2196f3;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1565c0;
+}
+
+.status-message.processing {
+    border-left-color: #ff9800;
+    background: linear-gradient(135deg, #fff3e0 0%, #ffcc02 100%);
+    color: #ef6c00;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === AUTHOR INFO === */
+.author-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(102, 126, 234, 0.1);
+    text-align: center;
+    z-index: 1000;
+    font-size: 11px;
+}
+
+.author-info p {
+    color: #a0aec0;
+    font-style: italic;
+    margin: 0;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+/* === ANIMATIONS === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.form-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.form-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 15px;
+    }
+    
+    .card-content {
+        padding: 20px;
+    }
+    
+    .ms-welcome__header {
+        padding: 20px 15px;
+    }
+    
+    .ms-welcome__header h1 {
+        font-size: 20px;
+    }
+}
+
+/* === UTILITY CLASSES === */
+.text-center {
+    text-align: center;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* === LOADING STATES === */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #667eea;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === LEGACY SUPPORT === */
+b {
+    font-weight: 600;
+}
+
+.ms-Grid-row {
+    margin-bottom: 15px;
+}
+
+/* Features list - kept for compatibility */
+.ms-welcome__features {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem {
+    padding-bottom: 20px;
+    display: flex;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
+    margin-right: 10px;
+}
+
+.ms-welcome__action.ms-Button--hero {
+    margin-top: 30px;
+}
