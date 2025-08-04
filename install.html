@@ -118,14 +118,53 @@
         
         <script>
         function fallbackInstall(event) {
+            // Detekce prohlížeče a systému
+            var userAgent = navigator.userAgent;
+            var isMac = userAgent.includes('Mac');
+            var isWindows = userAgent.includes('Windows');
+            var isChrome = userAgent.includes('Chrome');
+            var isSafari = userAgent.includes('Safari') && !userAgent.includes('Chrome');
+            var isFirefox = userAgent.includes('Firefox');
+            
             // Pokus o automatickou instalaci
             setTimeout(function() {
-                alert('💡 Pokud se Excel neotevřel automaticky:\n\n1. Zkus červené tlačítko "⚡ Instalovat přes prohlížeč"\n2. Nebo použij zelené tlačítko "📁 Stáhnout manifest.xml"');
+                var message = '💡 Pokud se Excel neotevřel automaticky:\n\n';
+                
+                if (isMac) {
+                    message += 'Na macOS zkus:\n';
+                    message += '1. Červené tlačítko "⚡ Instalovat přes prohlížeč"\n';
+                    message += '2. Nebo zkopíruj URL a vlož ji přímo do Excelu\n\n';
+                }
+                
+                if (isWindows) {
+                    message += 'Na Windows zkus:\n';
+                    message += '1. Pravým tlačítkem na modrý odkaz → "Kopírovat adresu odkazu"\n';
+                    message += '2. Excel → Vložit → Získat doplňky → vlož URL\n\n';
+                }
+                
+                message += '3. Nebo použij zelené tlačítko "📁 Stáhnout manifest.xml"';
+                
+                alert(message);
             }, 2000);
         }
         
         function openManifest(event) {
-            alert('💡 Po otevření manifest.xml:\n\n1. Excel by se měl automaticky otevřít\n2. Nebo zkopíruj URL a otevři ji přímo v Excelu\n3. Excel → Vložit → Získat doplňky → zadej URL');
+            // Zkopírování URL do schránky
+            var url = 'https://sirkolombus.github.io/nexia-sampling/manifest.xml';
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(function() {
+                    alert('✅ URL zkopírována do schránky!\n\n' + url + '\n\nTed:\n1. Otevři Excel\n2. Vložit → Získat doplňky\n3. Vlož zkopírovanou URL');
+                }).catch(function() {
+                    showManualInstructions(url);
+                });
+            } else {
+                showManualInstructions(url);
+            }
+        }
+        
+        function showManualInstructions(url) {
+            alert('💡 Zkopíruj tuto URL do Excelu:\n\n' + url + '\n\n1. Otevři Excel\n2. Vložit → Získat doplňky\n3. Vlož URL výše');
         }
         </script>
         
