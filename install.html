@@ -104,22 +104,52 @@
         <h1>NEXIA - Vzorkování</h1>
         <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
         
-        <a href="ms-excel:ofv|u|https://sirkolombus.github.io/nexia-sampling/manifest.xml" class="install-btn">
+        <a href="ms-excel:ofv|u|https://sirkolombus.github.io/nexia-sampling/manifest.xml" class="install-btn" onclick="fallbackInstall(event)">
             🚀 Automatická instalace
+        </a>
+        
+        <a href="https://sirkolombus.github.io/nexia-sampling/manifest.xml" target="_blank" class="install-btn" style="background: #ff6b6b;" onclick="openManifest(event)">
+            ⚡ Instalovat přes prohlížeč
         </a>
         
         <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
             📁 Stáhnout manifest.xml
         </a>
         
+        <script>
+        function fallbackInstall(event) {
+            // Pokus o automatickou instalaci
+            setTimeout(function() {
+                alert('💡 Pokud se Excel neotevřel automaticky:\n\n1. Zkus červené tlačítko "⚡ Instalovat přes prohlížeč"\n2. Nebo použij zelené tlačítko "📁 Stáhnout manifest.xml"');
+            }, 2000);
+        }
+        
+        function openManifest(event) {
+            alert('💡 Po otevření manifest.xml:\n\n1. Excel by se měl automaticky otevřít\n2. Nebo zkopíruj URL a otevři ji přímo v Excelu\n3. Excel → Vložit → Získat doplňky → zadej URL');
+        }
+        </script>
+        
         <div style="background: #fff3cd; border: 2px solid #ffeaa7; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
-            <h4 style="margin-top: 0; color: #856404;">⚠️ Pokud automatická instalace nefunguje:</h4>
-            <ol style="margin-bottom: 0;">
-                <li><strong>Klikni na "📁 Stáhnout manifest.xml"</strong> výše</li>
-                <li><strong>Otevři Excel</strong></li>
-                <li><strong>Jdi na:</strong> Vložit → Získat doplňky → Moje doplňky</li>
-                <li><strong>Klikni "Nahrát můj doplněk"</strong></li>
-                <li><strong>Vyber stažený soubor</strong> manifest.xml</li>
+            <h4 style="margin-top: 0; color: #856404;">📋 Instrukce pro instalaci:</h4>
+            
+            <p><strong>Metoda A - Automatická (nejjednodušší):</strong></p>
+            <ol>
+                <li>Klikni na modré tlačítko "🚀 Automatická instalace"</li>
+                <li>Pokud se Excel neotevře, zkus červené tlačítko</li>
+            </ol>
+            
+            <p><strong>Metoda B - Přes prohlížeč:</strong></p>
+            <ol>
+                <li>Klikni na červené tlačítko "⚡ Instalovat přes prohlížeč"</li>
+                <li>Zkopíruj zobrazovanou URL</li>
+                <li>V Excelu jdi na: Vložit → Získat doplňky → zadej URL</li>
+            </ol>
+            
+            <p><strong>Metoda C - Ruční stažení:</strong></p>
+            <ol>
+                <li>Klikni na zelené tlačítko "📁 Stáhnout manifest.xml"</li>
+                <li>Otevři Excel → Vložit → Získat doplňky → Moje doplňky</li>
+                <li>Klikni "Nahrát můj doplněk" a vyber stažený soubor</li>
             </ol>
         </div>
         
