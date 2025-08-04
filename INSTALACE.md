@@ -23,9 +23,9 @@ Tento balíček obsahuje kompletní auditní nástroj pro statistické vzorková
 
 **Klikni na tento odkaz a add-in se automaticky nainstaluje:**
 
-🔗 **[NAINSTALOVAT NEXIA - VZORKOVÁNÍ](ms-excel:ofv|u|https://nexia-sampling.github.io/manifest.xml)**
+🔗 **[NAINSTALOVAT NEXIA - VZORKOVÁNÍ](ms-excel:ofv|u|https://sirkolombus.github.io/nexia-sampling/manifest.xml)**
 
-🌐 **[INSTALAČNÍ WEBOVÁ STRÁNKA](https://nexia-sampling.github.io/install.html)**
+🌐 **[INSTALAČNÍ WEBOVÁ STRÁNKA](https://sirkolombus.github.io/nexia-sampling/install.html)**
 
 *Odkaz automaticky otevře Excel s nabídkou instalace add-inu. Stačí potvrdit instalaci.*
 
@@ -63,7 +63,7 @@ Pro centrální nasazení v organizaci kontaktuj IT administrátora s tímto bal
 
 ### 🌐 Hosting souborů
 
-Add-in očekává soubory na: `https://nexia-sampling.github.io/`
+Add-in očekává soubory na: `https://sirkolombus.github.io/nexia-sampling/`
 
 **Pro vlastní hosting:**
 1. Nahraj obsah `dist/` složky na svůj webserver
