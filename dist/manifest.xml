@@ -9,8 +9,6 @@
   <IconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://nexia.cz/podpora"/>
-  <PrivacyUrl DefaultValue="https://nexia.cz/soukromi"/>
-  <EndUserLicenseUrl DefaultValue="https://nexia.cz/licence"/>
   <AppDomains>
     <AppDomain>https://sirkolombus.github.io</AppDomain>
     <AppDomain>https://nexia.cz</AppDomain>
