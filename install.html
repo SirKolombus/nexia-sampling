@@ -105,36 +105,22 @@
         <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
         
         <a href="https://office.com/launch/excel" target="_blank" class="install-btn" onclick="launchExcelOnline(event)">
-            🌐 Otevřít Excel Online
+            🌐 Instalovat do Excel Online
         </a>
         
-        <button class="install-btn" style="background: #ff6b6b;" onclick="copyManifestUrl()">
-            📋 Zkopírovat URL add-inu
-        </button>
-        
         <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
-            📁 Stáhnout manifest.xml
+            📁 Stáhnout pro Desktop Excel
         </a>
         
         <script>
         function launchExcelOnline(event) {
             event.preventDefault();
             
-            // Zkopírování URL do schránky
-            var manifestUrl = 'https://sirkolombus.github.io/nexia-sampling/manifest.xml';
+            // Zobrazit instrukce a otevřít Excel Online
+            alert('🚀 NEXIA Add-in - Instalace do Excel Online\\n\\n📋 POSTUP:\\n1. Klikni OK pro otevření Excel Online\\n2. Vytvoř nový sešit nebo otevři existující\\n3. Jdi na: Vložit → Doplňky → Získat doplňky\\n4. Klikni "Nahrát můj doplněk"\\n5. Vlož tuto URL:\\n   https://sirkolombus.github.io/nexia-sampling/manifest.xml\\n6. ✅ DŮLEŽITÉ: Zaškrtni "Důvěřovat tomuto doplňku"\\n\\n💡 Add-in se pak objeví v "Moje doplňky" pro snadné spravování!');
             
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(manifestUrl).then(function() {
-                    alert('✅ URL add-inu zkopírována!\n\n' + manifestUrl + '\n\n📋 POSTUP PRO TRVALOU INSTALACI:\n1. Klikni OK pro otevření Excel Online\n2. Vytvoř nový sešit\n3. Vložit → Doplňky → Získat doplňky\n4. "Nahrát můj doplněk" → vlož zkopírovanou URL\n5. ✅ DŮLEŽITÉ: Zaškrtni "Důvěřovat tomuto doplňku"\n\n💡 Add-in se pak objeví v "Moje doplňky" pro snadné odinstalování!');
-                    
-                    // Otevření Excel Online
-                    window.open('https://office.com/launch/excel', '_blank');
-                }).catch(function() {
-                    showExcelOnlineInstructions(manifestUrl);
-                });
-            } else {
-                showExcelOnlineInstructions(manifestUrl);
-            }
+            // Otevření Excel Online
+            window.open('https://office.com/launch/excel', '_blank');
         }
         
         function copyManifestUrl() {
@@ -162,39 +148,25 @@
         </script>
         
         <div style="background: #e8f5e8; border: 2px solid #4caf50; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
-            <h4 style="margin-top: 0; color: #2e7d32;">🎯 NEJSPOLEHLIVĚJŠÍ ZPŮSOB - TRVALÁ INSTALACE:</h4>
+            <h4 style="margin-top: 0; color: #2e7d32;">🎯 ZPŮSOBY INSTALACE:</h4>
             
             <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px; padding: 10px; margin: 10px 0;">
-                <strong>💡 TIP:</strong> Pro trvalou instalace (aby se add-in choval jako nainstalovaný plugin):
-                <ol style="margin: 5px 0;">
-                    <li>Po instalaci jdi do <strong>Soubor → Možnosti → Doplňky</strong></li>
-                    <li>Nastav add-in jako <strong>"Důvěryhodný"</strong></li>
-                    <li>Add-in se objeví v sekci <strong>"Moje doplňky"</strong> pro snadné odinstalování</li>
-                </ol>
+                <strong>💡 TIP:</strong> Pro trvalou instalaci označte add-in jako <strong>"Důvěryhodný"</strong> při instalaci.
             </div>
             
-            <p><strong>Metoda 1 - Excel Online (100% funkční + trvalá):</strong></p>
+            <p><strong>🌐 Metoda 1 - Excel Online (nejjednodušší):</strong></p>
             <ol>
-                <li>Klikni na <strong>"🌐 Otevřít Excel Online"</strong></li>
-                <li>URL se automaticky zkopíruje do schránky</li>
-                <li>V Excel Online: <strong>Vložit → Doplňky → Získat doplňky</strong></li>
-                <li>Klikni <strong>"Nahrát můj doplněk"</strong> a vlož zkopírovanou URL</li>
+                <li>Klikni na <strong>"🌐 Instalovat do Excel Online"</strong></li>
+                <li>Automaticky se otevře Excel Online s instrukcemi</li>
+                <li>Následuj pokyny v prohlížeči</li>
                 <li>✅ <strong>Zaškrtni "Důvěřovat tomuto doplňku"</strong> pro trvalou instalaci</li>
             </ol>
             
-            <p><strong>Metoda 2 - Desktop Excel (doporučeno pro firemní použití):</strong></p>
+            <p><strong>📁 Metoda 2 - Desktop Excel (pro firemní použití):</strong></p>
             <ol>
-                <li>Klikni na <strong>"📋 Zkopírovat URL add-inu"</strong></li>
-                <li>Otevři Excel na počítači</li>
-                <li>Jdi na: <strong>Vložit → Získat doplňky → "Nahrát můj doplněk"</strong></li>
-                <li>Vlož zkopírovanou URL</li>
-                <li>✅ <strong>V nastavení označit jako "Důvěryhodný doplněk"</strong></li>
-            </ol>
-            
-            <p><strong>Metoda 3 - Ruční stažení (nejbezpečnější):</strong></p>
-            <ol>
-                <li>Klikni na <strong>"📁 Stáhnout manifest.xml"</strong></li>
-                <li>V Excelu: <strong>Vložit → Získat doplňky → Moje doplňky</strong></li>
+                <li>Klikni na <strong>"� Stáhnout pro Desktop Excel"</strong></li>
+                <li>Uloží se soubor manifest.xml</li>
+                <li>Otevři Excel → <strong>Vložit → Získat doplňky → Moje doplňky</strong></li>
                 <li><strong>"Nahrát můj doplněk"</strong> a vyber stažený soubor</li>
                 <li>🔒 Add-in se uloží jako "lokální důvěryhodný doplněk"</li>
             </ol>

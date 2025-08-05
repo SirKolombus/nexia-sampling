@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>47446573-53a6-4d14-b333-7d090d488cfb</Id>
-  <Version>1.0.0.0</Version>
-  <ProviderName>NEXIA AP</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
+  <Version>1.0.0.65</Version>
+  <ProviderName>NEXIA AP s.r.o.</ProviderName>
+  <DefaultLocale>cs-CZ</DefaultLocale>
   <DisplayName DefaultValue="NEXIA - Vzorkování"/>
-  <Description DefaultValue="Profesionální auditní nástroj pro statistické vzorkování v Excelu"/>
-  <IconUrl DefaultValue="https://nexia-sampling.github.io/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://nexia-sampling.github.io/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://nexia.cz/help"/>
+  <Description DefaultValue="Profesionální auditní nástroj pro statistické vzorkování v Excelu. Umožňuje efektivní výběr vzorků pro audit a kontrolu dat."/>
+  <IconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://nexia.cz/podpora"/>
+  <PrivacyUrl DefaultValue="https://nexia.cz/soukromi"/>
+  <EndUserLicenseUrl DefaultValue="https://nexia.cz/licence"/>
   <AppDomains>
-    <AppDomain>https://nexia-sampling.github.io</AppDomain>
+    <AppDomain>https://sirkolombus.github.io</AppDomain>
+    <AppDomain>https://nexia.cz</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
   </Hosts>
+  <Requirements>
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="ExcelApi" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://nexia-sampling.github.io/taskpane.html"/>
+    <SourceLocation DefaultValue="https://sirkolombus.github.io/nexia-sampling/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
+  <Metadata>
+    <Item name="AppType" value="TaskPane"/>
+    <Item name="Category" value="Productivity"/>
+    <Item name="Publisher" value="NEXIA AP s.r.o."/>
+    <Item name="SupportEmail" value="support@nexia.cz"/>
+    <Item name="LastUpdated" value="2025-08-05"/>
+  </Metadata>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Hosts>
       <Host xsi:type="Workbook">
@@ -62,23 +77,23 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://nexia-sampling.github.io/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://nexia-sampling.github.io/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://nexia-sampling.github.io/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://nexia.cz"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://nexia-sampling.github.io/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://nexia-sampling.github.io/taskpane.html"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://sirkolombus.github.io/nexia-sampling/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://sirkolombus.github.io/nexia-sampling/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
+        <bt:String id="GetStarted.Title" DefaultValue="Začněte s NEXIA Vzorkováním!"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="NEXIA Nástroje"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="NEXIA - Vzorkování"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
+        <bt:String id="GetStarted.Description" DefaultValue="NEXIA Vzorkování bylo úspěšně načteno. Přejděte na kartu DOMŮ a klikněte na tlačítko 'NEXIA - Vzorkování' pro začátek práce."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Otevře panel NEXIA nástrojů pro auditní vzorkování"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
