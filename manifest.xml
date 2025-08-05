@@ -62,14 +62,14 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://nexia-sampling.github.io/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://nexia-sampling.github.io/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://nexia-sampling.github.io/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://nexia.cz"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://nexia-sampling.github.io/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://nexia-sampling.github.io/taskpane.html"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://sirkolombus.github.io/nexia-sampling/commands.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://sirkolombus.github.io/nexia-sampling/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
