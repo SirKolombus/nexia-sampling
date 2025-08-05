@@ -5,7 +5,7 @@
   <ProviderName>NEXIA AP s.r.o.</ProviderName>
   <DefaultLocale>cs-CZ</DefaultLocale>
   <DisplayName DefaultValue="NEXIA - Vzorkování"/>
-  <Description DefaultValue="Profesionální auditní nástroj pro statistické vzorkování v Excelu. Instaluje se trvale do 'Moje doplňky' a lze normálně odinstalovat."/>
+  <Description DefaultValue="Profesionální auditní nástroj pro statistické vzorkování v Excelu. Umožňuje efektivní výběr vzorků pro audit a kontrolu dat. Instaluje se trvale do 'Moje doplňky'."/>
   <IconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://nexia.cz/podpora"/>
@@ -27,7 +27,25 @@
     <SourceLocation DefaultValue="https://sirkolombus.github.io/nexia-sampling/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Edit"/>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <Sets DefaultMinVersion="1.1">
+        <Set Name="Mailbox" MinVersion="1.1"/>
+      </Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <Runtimes>
+          <Runtime resid="TaskPaneRuntime" lifetime="long"/>
+        </Runtimes>
+        <AllFormFactors>
+          <ExtensionPoint xsi:type="LaunchEvent">
+            <LaunchEvents>
+              <LaunchEvent Type="OnNewMessageCompose" FunctionName="onNewMessageCompose"/>
+            </LaunchEvents>
+          </ExtensionPoint>
+        </AllFormFactors>
     <Hosts>
       <Host xsi:type="Workbook">
         <DesktopFormFactor>
@@ -85,7 +103,7 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="NEXIA - Vzorkování"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="NEXIA Vzorkování bylo úspěšně nainstalováno. Najdete ho v 'Moje doplňky' a na kartě DOMŮ. Klikněte na tlačítko 'NEXIA - Vzorkování' pro začátek práce."/>
+        <bt:String id="GetStarted.Description" DefaultValue="NEXIA Vzorkování bylo úspěšně načteno. Přejděte na kartu DOMŮ a klikněte na tlačítko 'NEXIA - Vzorkování' pro začátek práce."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Otevře panel NEXIA nástrojů pro auditní vzorkování"/>
       </bt:LongStrings>
     </Resources>
