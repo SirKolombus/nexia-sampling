@@ -455,6 +455,16 @@ async function generateNPPSample() {
       await context.sync();
       
       const values = range.values;
+      
+      // Překalkulace totalSum z aktuálních dat pro zajištění správnosti
+      totalSum = 0;
+      for (let i = 0; i < values.length; i++) {
+        const cellValue = values[i][amountColumnIndex - 1];
+        if (typeof cellValue === "number") {
+          totalSum += Math.abs(cellValue);
+        }
+      }
+      
       const step = Math.abs(totalSum) / finalSampleSize;
       const randomStart = Math.random() * step;
       
@@ -482,13 +492,13 @@ async function generateNPPSample() {
         ["Sloupec s obraty:", amountColumnInput],
         ["Faktor spolehlivosti:", confidenceFactor],
         ["Prováděcí významnost:", formatNumber(materiality)],
-        ["Celková suma obratů:", formatNumber(totalSum)],
+        ["Celková suma obratů:", formatNumber(Math.abs(totalSum))],
         ["", ""],
         ["VÝPOČTY A VZORCE:", ""],
-        ["Statistický odhad vzorku:", `${formatNumber(calculatedSampleSize)} = (Faktor spolehlivosti × Celková suma) / Prováděcí významnost = (${confidenceFactor} × ${formatNumber(totalSum)}) / ${formatNumber(materiality)}`],
+        ["Statistický odhad vzorku:", `${formatNumber(calculatedSampleSize)} = (Faktor spolehlivosti × Celková suma) / Prováděcí významnost = (${confidenceFactor} × ${formatNumber(Math.abs(totalSum))}) / ${formatNumber(materiality)}`],
         ["Použitý počet vzorků:", formatNumber(finalSampleSize)],
         ["Typ vzorku:", sampleTypeMessage],
-        ["Krok vzorkování:", `${formatNumber(Math.round(step))} = Celková suma / Počet vzorků = ${formatNumber(totalSum)} / ${finalSampleSize}`],
+        ["Krok vzorkování:", `${formatNumber(Math.round(step))} = Celková suma / Počet vzorků = ${formatNumber(Math.abs(totalSum))} / ${finalSampleSize}`],
         ["Náhodný start:", `${formatNumber(Math.round(randomStart))} = Náhodné číslo × Krok = ${(randomStart/step).toFixed(4)} × ${formatNumber(Math.round(step))}`],
         ["Poznámka k náhodnosti:", "Náhodné číslo je generováno funkcí Math.random() JavaScriptu, která vytváří pseudonáhodná čísla v rozsahu 0-1 s rovnoměrným rozdělením pravděpodobnosti"]
       ];
@@ -703,6 +713,15 @@ async function generateRandomSample() {
       
       const values = range.values;
       const totalRows = values.length;
+      
+      // Překalkulace totalSum z aktuálních dat pro zajištění správnosti
+      totalSum = 0;
+      for (let i = 0; i < values.length; i++) {
+        const cellValue = values[i][amountColumnIndex - 1];
+        if (typeof cellValue === "number") {
+          totalSum += Math.abs(cellValue);
+        }
+      }
       
       // Počet řádků dat (bez záhlaví)
       const dataRows = totalRows - 1; // Předpokládáme, že první řádek je záhlaví
