@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>47446573-53a6-4d14-b333-7d090d488cfb</Id>
-  <Version>1.0.0.69</Version>
+  <Version>1.0.0.70</Version>
   <ProviderName>NEXIA AP s.r.o.</ProviderName>
   <DefaultLocale>cs-CZ</DefaultLocale>
   <DisplayName DefaultValue="NEXIA - Vzorkování"/>
-  <Description DefaultValue="Profesionální auditní nástroj pro statistické vzorkování v Excelu. Instaluje se trvale do 'Moje doplňky' a lze normálně odinstalovat."/>
+  <Description DefaultValue="Profesionální auditní nástroj pro statistické vzorkování v Excelu. Pro trvalou instalaci použijte Desktop Excel, ne webovou verzi."/>
   <IconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://sirkolombus.github.io/nexia-sampling/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://nexia.cz/podpora"/>
@@ -85,7 +85,7 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="NEXIA - Vzorkování"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="NEXIA Vzorkování bylo úspěšně nainstalováno. Najdete ho v 'Moje doplňky' a na kartě DOMŮ. Klikněte na tlačítko 'NEXIA - Vzorkování' pro začátek práce."/>
+        <bt:String id="GetStarted.Description" DefaultValue="NEXIA Vzorkování bylo úspěšně nainstalováno v Desktop Excel. Add-in je nyní dostupný ve všech verzích Excelu včetně Online. Najdete ho na kartě DOMŮ."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Otevře panel NEXIA nástrojů pro auditní vzorkování"/>
       </bt:LongStrings>
     </Resources>
