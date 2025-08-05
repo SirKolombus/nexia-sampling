@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXIA - Vzorkování | Instalace</title>
     <style>
-        body {
+              <div class="support">
+            <strong>🗑️ Jak odinstalovat add-in:</strong><br>
+            <strong>DESKTOP EXCEL:</strong> Soubor → Možnosti → Doplňky → Spravovat: Doplňky Office → Jít → najdi "NEXIA - Vzorkování" → Odebrat<br><br>
+            <strong>EXCEL ONLINE:</strong> Vložit → Doplňky → Moje doplňky → najdi "NEXIA - Vzorkování" → klikni na "..." → Odebrat<br><br>
+            <strong>💡 Pokud se add-in neobjevuje v "Moje doplňky":</strong> Znamená to, že byl nahrán jako dočasný. Proveď instalaci znovu přes "Moje doplňky" sekci.
+        </div>y {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
@@ -104,9 +109,13 @@
         <h1>NEXIA - Vzorkování</h1>
         <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
         
-        <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
+                <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
             📁 Stáhnout manifest a nainstalovat
         </a>
+        
+        <script>
+        // Odstraněny všechny nepoužívané funkce pro URL instalaci
+        </script>
         
         <div style="background: #e8f5e8; border: 2px solid #4caf50; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
             <h4 style="margin-top: 0; color: #2e7d32;">📁 JEDINÝ SPOLEHLIVÝ ZPŮSOB INSTALACE:</h4>
@@ -135,6 +144,66 @@
             </div>
         </div>
         
+        <script>
+        function launchExcelOnline(event) {
+            event.preventDefault();
+            
+            // Zobrazit instrukce a otevřít Excel Online
+            alert('🚀 NEXIA Add-in - Instalace do Excel Online\\n\\n📋 POSTUP:\\n1. Klikni OK pro otevření Excel Online\\n2. Vytvoř nový sešit nebo otevři existující\\n3. Jdi na: Vložit → Doplňky → Získat doplňky\\n4. Klikni "Nahrát můj doplněk"\\n5. Vlož tuto URL:\\n   https://sirkolombus.github.io/nexia-sampling/manifest.xml\\n6. ✅ DŮLEŽITÉ: Zaškrtni "Důvěřovat tomuto doplňku"\\n\\n💡 Add-in se pak objeví v "Moje doplňky" pro snadné spravování!');
+            
+            // Otevření Excel Online
+            window.open('https://office.com/launch/excel', '_blank');
+        }
+        
+        function copyManifestUrl() {
+            var manifestUrl = 'https://sirkolombus.github.io/nexia-sampling/manifest.xml';
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(manifestUrl).then(function() {
+                    alert('✅ URL zkopírována do schránky!\n\n' + manifestUrl + '\n\n📋 JAK NAINSTALOVAT JAKO TRVALÝ PLUGIN:\n\n🖥️ DESKTOP EXCEL:\n1. Otevři Excel\n2. Vložit → Získat doplňky\n3. "Nahrát můj doplněk" → vlož URL\n4. ✅ Označit jako "Důvěryhodný doplněk"\n5. Najdeš ho pak v Soubor → Možnosti → Doplňky\n\n🌐 EXCEL ONLINE:\n1. Jdi na office.com\n2. Otevři Excel Online\n3. Vložit → Doplňky → Získat doplňky\n4. "Nahrát můj doplněk" → vlož URL\n5. ✅ Zaškrtni "Důvěřovat tomuto doplňku"');
+                }).catch(function() {
+                    showManualCopy(manifestUrl);
+                });
+            } else {
+                showManualCopy(manifestUrl);
+            }
+        }
+        
+        function showExcelOnlineInstructions(url) {
+            alert('� Zkopíruj URL a pokračuj:\n\n' + url + '\n\n1. Jdi na office.com\n2. Otevři Excel Online\n3. Vložit → Doplňky → vlož URL výše');
+            window.open('https://office.com/launch/excel', '_blank');
+        }
+        
+        function showManualCopy(url) {
+            alert('📋 Zkopíruj tuto URL:\n\n' + url + '\n\nPak jdi do Excelu:\nVložit → Získat doplňky → "Nahrát můj doplněk" → vlož URL');
+        }
+        </script>
+        
+        <div style="background: #e8f5e8; border: 2px solid #4caf50; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
+            <h4 style="margin-top: 0; color: #2e7d32;">🎯 ZPŮSOBY INSTALACE:</h4>
+            
+            <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px; padding: 10px; margin: 10px 0;">
+                <strong>💡 TIP:</strong> Pro trvalou instalaci označte add-in jako <strong>"Důvěryhodný"</strong> při instalaci.
+            </div>
+            
+            <p><strong>🌐 Metoda 1 - Excel Online (nejjednodušší):</strong></p>
+            <ol>
+                <li>Klikni na <strong>"🌐 Instalovat do Excel Online"</strong></li>
+                <li>Automaticky se otevře Excel Online s instrukcemi</li>
+                <li>Následuj pokyny v prohlížeči</li>
+                <li>✅ <strong>Zaškrtni "Důvěřovat tomuto doplňku"</strong> pro trvalou instalaci</li>
+            </ol>
+            
+            <p><strong>📁 Metoda 2 - Desktop Excel (pro firemní použití):</strong></p>
+            <ol>
+                <li>Klikni na <strong>"� Stáhnout pro Desktop Excel"</strong></li>
+                <li>Uloží se soubor manifest.xml</li>
+                <li>Otevři Excel → <strong>Vložit → Získat doplňky → Moje doplňky</strong></li>
+                <li><strong>"Nahrát můj doplněk"</strong> a vyber stažený soubor</li>
+                <li>🔒 Add-in se uloží jako "lokální důvěryhodný doplněk"</li>
+            </ol>
+        </div>
+        
         <div class="requirements">
             <h3>📋 Systémové požadavky:</h3>
             <ul>
@@ -145,10 +214,9 @@
         </div>
         
         <div class="support">
-            <strong>🗑️ Jak odinstalovat add-in:</strong><br>
-            <strong>DESKTOP EXCEL:</strong> Soubor → Možnosti → Doplňky → Spravovat: Doplňky Office → Jít → najdi "NEXIA - Vzorkování" → Odebrat<br><br>
-            <strong>EXCEL ONLINE:</strong> Vložit → Doplňky → Moje doplňky → najdi "NEXIA - Vzorkování" → klikni na "..." → Odebrat<br><br>
-            <strong>💡 Pokud se add-in neobjevuje v "Moje doplňky":</strong> Znamená to, že byl nahrán jako dočasný. Proveď instalaci znovu přes "Moje doplňky" sekci.
+            <strong>� Jak odinstalovat add-in:</strong><br>
+            Po trvalé instalaci najdeš add-in v: <strong>Soubor → Možnosti → Doplňky → Moje doplňky</strong><br>
+            Tam ho můžeš jednoduše odebrat nebo deaktivovat.
         </div>
         
         <div style="background: #f0f8ff; border: 1px solid #4a90e2; border-radius: 8px; padding: 15px; margin-top: 15px;">
