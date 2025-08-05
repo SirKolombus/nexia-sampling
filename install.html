@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXIA - Vzorkování | Instalace</title>
     <style>
-        body {
+              <div class="support">
+            <strong>🗑️ Jak odinstalovat add-in:</strong><br>
+            <strong>DESKTOP EXCEL:</strong> Soubor → Možnosti → Doplňky → Spravovat: Doplňky Office → Jít → najdi "NEXIA - Vzorkování" → Odebrat<br><br>
+            <strong>EXCEL ONLINE:</strong> Vložit → Doplňky → Moje doplňky → najdi "NEXIA - Vzorkování" → klikni na "..." → Odebrat<br><br>
+            <strong>💡 Pokud se add-in neobjevuje v "Moje doplňky":</strong> Znamená to, že byl nahrán jako dočasný. Proveď instalaci znovu přes "Moje doplňky" sekci.
+        </div>y {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
@@ -104,13 +109,40 @@
         <h1>NEXIA - Vzorkování</h1>
         <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
         
-        <a href="https://office.com/launch/excel" target="_blank" class="install-btn" onclick="launchExcelOnline(event)">
-            🌐 Instalovat do Excel Online
+                <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
+            📁 Stáhnout manifest a nainstalovat
         </a>
         
-        <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
-            📁 Stáhnout pro Desktop Excel
-        </a>
+        <script>
+        // Odstraněny všechny nepoužívané funkce pro URL instalaci
+        </script>
+        
+        <div style="background: #e8f5e8; border: 2px solid #4caf50; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
+            <h4 style="margin-top: 0; color: #2e7d32;">📁 JEDINÝ SPOLEHLIVÝ ZPŮSOB INSTALACE:</h4>
+            
+            <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px; padding: 10px; margin: 10px 0;">
+                <strong>💡 TIP:</strong> Pouze ruční nahrání manifestu zajistí, že add-in půjde normálně odinstalovat!
+            </div>
+            
+            <p><strong>📋 POSTUP INSTALACE:</strong></p>
+            <ol>
+                <li><strong>Stáhni manifest:</strong> Klikni na "📁 Stáhnout manifest a nainstalovat"</li>
+                <li><strong>Otevři Excel</strong> (Desktop nebo Online)</li>
+                <li><strong>Jdi na:</strong> Vložit → Získat doplňky → <strong>Moje doplňky</strong></li>
+                <li><strong>Klikni:</strong> "Nahrát můj doplněk"</li>
+                <li><strong>Vyber:</strong> Stažený soubor manifest.xml</li>
+                <li>✅ <strong>Potvrď instalaci</strong> - add-in se uloží jako trvalý</li>
+            </ol>
+            
+            <div style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 5px; padding: 10px; margin: 10px 0;">
+                <strong>✅ PO INSTALACI:</strong> Add-in najdeš v sekci <strong>"Moje doplňky"</strong> kde ho můžeš:
+                <ul style="margin: 5px 0;">
+                    <li>🔧 <strong>Spravovat</strong> (zapnout/vypnout)</li>
+                    <li>🗑️ <strong>Odinstalovat</strong> (úplně odstranit)</li>
+                    <li>⚙️ <strong>Konfigurovat</strong> nastavení</li>
+                </ul>
+            </div>
+        </div>
         
         <script>
         function launchExcelOnline(event) {
@@ -192,7 +224,7 @@
         </div>
         
         <div class="version">
-            NEXIA - Vzorkování v0.65 | © 2025 NEXIA AP
+            NEXIA - Vzorkování v0.68 | © 2025 NEXIA AP
         </div>
     </div>
 </body>
