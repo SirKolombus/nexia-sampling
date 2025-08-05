@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXIA - Vzorkování | Instalace</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .install-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+        
+        .install-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .requirements {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .requirements h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .requirements ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .version {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+        
+        .support {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #2196f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/Nové logo Nexia.png" alt="NEXIA AP" class="logo">
+        
+        <h1>NEXIA - Vzorkování</h1>
+        <p class="subtitle">Profesionální auditní nástroj pro Excel</p>
+        
+        <a href="manifest.xml" download class="install-btn" style="background: #28a745;">
+            📁 Stáhnout manifest a nainstalovat
+        </a>
+        
+        <div style="background: #e8f5e8; border: 2px solid #4caf50; border-radius: 10px; padding: 15px; margin: 20px 0; text-align: left;">
+            <h4 style="margin-top: 0; color: #2e7d32;">📁 INSTALACE DO "MOJE DOPLŇKY":</h4>
+            
+            <div style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px; padding: 10px; margin: 10px 0;">
+                <strong>⚠️ DŮLEŽITÉ:</strong> Pro Excel Online použij <strong>DESKTOP EXCEL</strong> - webová verze má omezenou podporu!
+            </div>
+            
+            <p><strong>�️ DESKTOP EXCEL (DOPORUČENO):</strong></p>
+            <ol>
+                <li><strong>Stáhni manifest:</strong> Klikni na "📁 Stáhnout manifest a nainstalovat"</li>
+                <li><strong>Otevři Desktop Excel</strong> (ne webovou verzi!)</li>
+                <li><strong>Jdi na:</strong> Soubor → Možnosti → Doplňky → Spravovat: <strong>Doplňky Office</strong> → Jít</li>
+                <li><strong>Klikni:</strong> "Nahrát..." a vyber stažený manifest.xml</li>
+                <li><strong>✅ Zaškrtni:</strong> "Důvěřovat tomuto doplňku" a potvrď</li>
+                <li><strong>Restart Excel</strong> - add-in se objeví v "Moje doplňky"</li>
+            </ol>
+            
+            <p><strong>🌐 EXCEL ONLINE (ALTERNATIVA):</strong></p>
+            <ol>
+                <li><strong>Jdi na:</strong> Vložit → Doplňky → <strong>Moje doplňky</strong> (ne "Store"!)</li>
+                <li><strong>Klikni:</strong> "Nahrát můj doplněk" vpravo nahoře</li>
+                <li><strong>Vyber:</strong> Stažený manifest.xml soubor</li>
+                <li><strong>Pokud není dialog "Trust":</strong> Add-in bude jen dočasný</li>
+                <li><strong>Pro trvalé uložení:</strong> Musíš jít přes Desktop Excel</li>
+            </ol>
+            
+            <div style="background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; padding: 10px; margin: 10px 0;">
+                <strong>❌ EXCEL ONLINE PROBLÉMY:</strong>
+                <ul style="margin: 5px 0;">
+                    <li>� Dialog "Trust this add-in" se často nezobrazuje</li>
+                    <li>⏱️ Add-in se chová jako "dočasný" - zmizí po reload</li>
+                    <li>📍 Neuloží se do "Moje doplňky" trvale</li>
+                    <li>✅ <strong>ŘEŠENÍ:</strong> Použít Desktop Excel pro instalaci</li>
+                </ul>
+            </div>
+            
+            <div style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 5px; padding: 10px; margin: 10px 0;">
+                <strong>✅ PO ÚSPĚŠNÉ INSTALACI V DESKTOP:</strong> Add-in bude dostupný všude:
+                <ul style="margin: 5px 0;">
+                    <li>�️ <strong>Desktop Excel</strong> - plně funkční s možností správy</li>
+                    <li>🌐 <strong>Excel Online</strong> - synchronizuje se automaticky</li>
+                    <li>📱 <strong>Mobilní Excel</strong> - také dostupný</li>
+                    <li>🗑️ <strong>Odinstalování:</strong> Jen v Desktop Excel</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="requirements">
+            <h3>📋 Systémové požadavky:</h3>
+            <ul>
+                <li>Microsoft Excel 2016 nebo novější</li>
+                <li>Windows 10/11 nebo macOS 10.14+</li>
+                <li>Připojení k internetu</li>
+            </ul>
+        </div>
+        
+        <div class="support">
+            <strong>🗑️ Jak odinstalovat add-in:</strong><br>
+            <strong>DESKTOP EXCEL:</strong> Soubor → Možnosti → Doplňky → Spravovat: Doplňky Office → Jít → najdi "NEXIA - Vzorkování" → Odebrat<br><br>
+            <strong>EXCEL ONLINE:</strong> Vložit → Doplňky → Moje doplňky → najdi "NEXIA - Vzorkování" → klikni na "..." → Odebrat<br><br>
+            <strong>💡 Poznámka:</strong> Add-iny nahrané v Excel Online jako "dočasné" zmizí po zavření prohlížeče. Pro trvalou instalaci musíš použít Desktop Excel.
+        </div>
+        
+        <div style="background: #f0f8ff; border: 1px solid #4a90e2; border-radius: 8px; padding: 15px; margin-top: 15px;">
+            <strong>🛡️ Bezpečnost:</strong> Tento add-in používá pouze čtení a zápis do aktuálního sešitu. Neodesílá žádná data na server.
+        </div>
+        
+        <div class="version">
+            NEXIA - Vzorkování v0.70 | © 2025 NEXIA AP
+        </div>
+    </div>
+</body>
+</html>
