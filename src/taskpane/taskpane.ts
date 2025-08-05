@@ -457,15 +457,15 @@ async function generateNPPSample() {
       const values = range.values;
       
       // Překalkulace totalSum z aktuálních dat pro zajištění správnosti
-      totalSum = 0;
+      let absoluteTotalSum = 0;
       for (let i = 0; i < values.length; i++) {
         const cellValue = values[i][amountColumnIndex - 1];
         if (typeof cellValue === "number") {
-          totalSum += Math.abs(cellValue);
+          absoluteTotalSum += Math.abs(cellValue);
         }
       }
       
-      const step = Math.abs(totalSum) / finalSampleSize;
+      const step = absoluteTotalSum / finalSampleSize;
       const randomStart = Math.random() * step;
       
       // Získání informací o uživateli a času
@@ -492,13 +492,13 @@ async function generateNPPSample() {
         ["Sloupec s obraty:", amountColumnInput],
         ["Faktor spolehlivosti:", confidenceFactor],
         ["Prováděcí významnost:", formatNumber(materiality)],
-        ["Celková suma obratů:", formatNumber(Math.abs(totalSum))],
+        ["Celková suma obratů:", formatNumber(absoluteTotalSum)],
         ["", ""],
         ["VÝPOČTY A VZORCE:", ""],
-        ["Statistický odhad vzorku:", `${formatNumber(calculatedSampleSize)} = (Faktor spolehlivosti × Celková suma) / Prováděcí významnost = (${confidenceFactor} × ${formatNumber(Math.abs(totalSum))}) / ${formatNumber(materiality)}`],
+        ["Statistický odhad vzorku:", `${formatNumber(calculatedSampleSize)} = (Faktor spolehlivosti × Celková suma) / Prováděcí významnost = (${confidenceFactor} × ${formatNumber(absoluteTotalSum)}) / ${formatNumber(materiality)}`],
         ["Použitý počet vzorků:", formatNumber(finalSampleSize)],
         ["Typ vzorku:", sampleTypeMessage],
-        ["Krok vzorkování:", `${formatNumber(Math.round(step))} = Celková suma / Počet vzorků = ${formatNumber(Math.abs(totalSum))} / ${finalSampleSize}`],
+        ["Krok vzorkování:", `${formatNumber(Math.round(step))} = Celková suma / Počet vzorků = ${formatNumber(absoluteTotalSum)} / ${finalSampleSize}`],
         ["Náhodný start:", `${formatNumber(Math.round(randomStart))} = Náhodné číslo × Krok = ${(randomStart/step).toFixed(4)} × ${formatNumber(Math.round(step))}`],
         ["Poznámka k náhodnosti:", "Náhodné číslo je generováno funkcí Math.random() JavaScriptu, která vytváří pseudonáhodná čísla v rozsahu 0-1 s rovnoměrným rozdělením pravděpodobnosti"]
       ];
@@ -714,12 +714,12 @@ async function generateRandomSample() {
       const values = range.values;
       const totalRows = values.length;
       
-      // Překalkulace totalSum z aktuálních dat pro zajištění správnosti
-      totalSum = 0;
+      // Překalkulace absolutní sumy z aktuálních dat pro zajištění správnosti
+      let absoluteTotalSum = 0;
       for (let i = 0; i < values.length; i++) {
         const cellValue = values[i][amountColumnIndex - 1];
         if (typeof cellValue === "number") {
-          totalSum += Math.abs(cellValue);
+          absoluteTotalSum += Math.abs(cellValue);
         }
       }
       
@@ -779,10 +779,10 @@ async function generateRandomSample() {
         ["Metoda vzorkování:", "Náhodný generátor čísel (cyklický systematický výběr)"],
         ["Faktor spolehlivosti:", confidenceFactor],
         ["Prováděcí významnost:", formatNumber(materiality)],
-        ["Celková suma obratů:", formatNumber(Math.abs(totalSum))],
+        ["Celková suma obratů:", formatNumber(absoluteTotalSum)],
         ["", ""],
         ["VÝPOČTY A VZORCE:", ""],
-        ["Statistický odhad vzorku:", `${formatNumber(calculatedSampleSize)} = (Faktor spolehlivosti × Celková suma) / Prováděcí významnost = (${confidenceFactor} × ${formatNumber(Math.abs(totalSum))}) / ${formatNumber(materiality)}`],
+        ["Statistický odhad vzorku:", `${formatNumber(calculatedSampleSize)} = (Faktor spolehlivosti × Celková suma) / Prováděcí významnost = (${confidenceFactor} × ${formatNumber(absoluteTotalSum)}) / ${formatNumber(materiality)}`],
         ["Použitý počet vzorků:", formatNumber(finalSampleSize)],
         ["Typ vzorku:", sampleTypeMessage],
         ["Celkem řádků:", `${totalRows} (včetně záhlaví)`],
