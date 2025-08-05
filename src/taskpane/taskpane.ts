@@ -322,7 +322,7 @@ async function calculateNPPSample() {
       for (let i = 0; i < values.length; i++) {
         const cellValue = values[i][amountColumnIndex - 1];
         if (typeof cellValue === "number") {
-          totalSum += cellValue;
+          totalSum += Math.abs(cellValue);
         }
       }
       
@@ -379,7 +379,7 @@ async function prepareRandomSample() {
       for (let i = 0; i < values.length; i++) {
         const cellValue = values[i][amountColumnIndex - 1];
         if (typeof cellValue === "number") {
-          totalSum += cellValue;
+          totalSum += Math.abs(cellValue);
         }
       }
       
