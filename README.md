@@ -1,8 +1,8 @@
 # NPP Auditní nástroj - Excel Add-in
 
-**Aktuální verze:** v0.6 (Dokončená) - s novým NEXIA logem a finální úpravami  
-**Předchozí verze:** v0.5 (NPP-v0.5) - s moderním grafickým rozhraním  
-**Starší verze:** v0.4 (NPP-v0.4), v0.3, v0.2, v0.1 Alpha
+**Aktuální verze:** v0.7 (Dokončená) - s opravou ABS hodnot v NPP algoritmu  
+**Předchozí verze:** v0.6 (Dokončená) - s novým NEXIA logem a finální úpravami  
+**Starší verze:** v0.5 (NPP-v0.5) - s moderním grafickým rozhraním
 
 ## Popis projektu
 
@@ -35,14 +35,20 @@ Profesionální auditní nástroj pro Excel poskytující různé metody statist
 
 ### 🚀 Plánované verze:
 
-### v0.7 (Budoucí) 📋
+### v0.8 (Budoucí) 📋
 - 🔄 Další auditní techniky a metody vzorkování
-- � Rozšířená lokalizace
+- 🌍 Rozšířená lokalizace
 - 📈 Pokročilé reporty a analýzy
 
 ---
 
 ### ✅ Dokončené verze:
+
+### v0.7 (Dokončená) ✅
+- ✅ **Oprava ABS hodnot v NPP** - Implementace Math.abs() pro správný výpočet kumulativních součtů
+- ✅ **Matematická verifikace** - Ověření správnosti NPP a NGČ algoritmů s konkrétními příklady
+- ✅ **Zobrazení verze v názvu** - Přidání čísla verze do všech názvů add-inu
+- ✅ **Produkční nasazení** - Kompletní build a deployment na GitHub Pages
 
 ### v0.6 (Dokončená) ✅
 - ✅ **Nové NEXIA logo** - Implementace "Nové logo Nexia.png" v hlavičce add-inu
