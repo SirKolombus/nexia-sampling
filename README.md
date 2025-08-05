@@ -1,8 +1,8 @@
 # NPP Auditní nástroj - Excel Add-in
 
-**Aktuální verze:** v0.71 (Dokončená) - s opravou parametrů absolutních sum  
-**Předchozí verze:** v0.7 (Dokončená) - s opravou ABS hodnot v NPP algoritmu  
-**Starší verze:** v0.6 (Dokončená) - s novým NEXIA logem a finální úpravami
+**Aktuální verze:** v1.0.71 (Dokončená) - s opravou parametrů absolutních sum + Microsoft validace  
+**Předchozí verze:** v0.71 (Dokončená) - s opravou parametrů absolutních sum  
+**Starší verze:** v0.7 (Dokončená) - s opravou ABS hodnot v NPP algoritmu
 
 ## Popis projektu
 
@@ -43,6 +43,12 @@ Profesionální auditní nástroj pro Excel poskytující různé metody statist
 ---
 
 ### ✅ Dokončené verze:
+
+### v1.0.71 (Dokončená) ✅
+- ✅ **Microsoft validace** - Verze 1.0.71 splňuje požadavky Microsoft Store (min. verze 1.0)
+- ✅ **Oprava zobrazení parametrů** - "Celková suma obratů" nyní správně zobrazuje absolutní sumu
+- ✅ **Konzistentní výpočty** - Krok vzorkování vychází z absolutní sumy pro přesné NPP výsledky
+- ✅ **Lokální proměnné** - Použití `absoluteTotalSum` místo globální `totalSum` pro eliminaci chyb
 
 ### v0.71 (Dokončená) ✅
 - ✅ **Oprava zobrazení parametrů** - "Celková suma obratů" nyní správně zobrazuje absolutní sumu
